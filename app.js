@@ -24,9 +24,18 @@ const dburl = process.env.ATLASDB_URL;
 
 // "mongodb://127.0.0.1:27017/wanderlust"
 
+// async function main() {
+//     await mongoose.connect(dburl);
+// }
+
 async function main() {
-    await mongoose.connect(dburl);
+    await mongoose.connect(dburl, {
+        ssl: true,
+        tls: true,
+        tlsInsecure: false
+    });
 }
+
 
 main()
 .then(() => {
